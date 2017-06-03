@@ -15,8 +15,9 @@ else:
   PORT = 8124
 
 # serve render/ folder, not current folder
-rootdir = os.getcwd()
-os.chdir('render')
+rootdir = "/home/cuky/Devel/ulogme"
+render = "/home/cuky/Devel/ulogme/render"
+os.chdir(render)
 
 # Custom handler
 class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
@@ -37,7 +38,7 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
       refresh_time = form.getvalue('time')
       os.chdir(rootdir) # pop out
       updateEvents() # defined in export_events.py
-      os.chdir('render') # pop back to render directory
+      os.chdir(render) # pop back to render directory
       result = 'OK'
       
     if self.path == '/addnote':
@@ -47,7 +48,7 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
       os.chdir(rootdir) # pop out
       os.system('echo %s | ./note.sh %s' % (note, note_time))
       updateEvents() # defined in export_events.py
-      os.chdir('render') # go back to render
+      os.chdir(render) # go back to render
       result = 'OK'
 
     if self.path == '/blog':
@@ -59,7 +60,7 @@ class CustomHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
       trev = rewindTime(post_time)
       open('logs/blog_%d.txt' % (post_time, ), 'w').write(post)
       updateEvents() # defined in export_events.py
-      os.chdir('render') # go back to render
+      os.chdir(render) # go back to render
       result = 'OK'
     
     self.send_response(200)

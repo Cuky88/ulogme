@@ -1,11 +1,6 @@
 #!/bin/bash
 
-if [ "$(uname)" == "Darwin" ]; then
-  # This is a Mac
-  ./osx/run_ulogme_osx.sh
-else
   # Assume Linux
   sudo echo -n ""
-  sudo ./keyfreq.sh &
-  ./logactivewin.sh
-fi
+  sudo /home/cuky/Devel/ulogme/keyfreq.sh & sudo /home/cuky/Devel/ulogme/logactivewin.sh
+

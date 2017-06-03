@@ -58,8 +58,7 @@ def updateEvents():
   maxt = max(ts)
 
   # march from beginning to end, group events for each day and write json
-  ROOT = ''
-  RENDER_ROOT = os.path.join(ROOT, 'render')
+  RENDER_ROOT = '/home/cuky/Devel/ulogme/render'
   os.system('mkdir -p ' + RENDER_ROOT) # make sure output directory exists
   t = mint
   out_list = []

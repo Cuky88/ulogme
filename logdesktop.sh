@@ -6,14 +6,14 @@
 # wait time in seconds
 waittime="60"
 # directory to save screenshots to
-saveprefix="desktopscr/scr"
-mkdir -p desktopscr
+saveprefix="/home/cuky/Devel/ulogme/desktopscr/scr"
+mkdir -p saveprefix
 
 #------------------------------
 
 while true
 do
-	islocked=true; if [[ $(gnome-screensaver-command -q) =~ .*inactive.* ]]; then islocked=false; fi
+	islocked=true; if [[ $(gnome-screensaver-command -q) =~ .*not running!* ]]; then islocked=false; fi
 
 	if ! $islocked
 	then
@@ -22,6 +22,7 @@ do
 		fname="$saveprefix_$T.jpg"
 		# q is quality. Higher is higher quality
 		scrot -q 50 "$fname"
+		echo "screen shot taken..."
 	else
 		echo "screen is locked, waiting..."
 	fi

@@ -182,7 +182,7 @@ function computeHackingStats(ew, ek, hacking_titles) {
         if(hacking_title) {
           // current active title is a hacking title. accumulate streak
           // magic numbers alert :)
-          if(fhere < 3) { 
+          if(fhere < 1) {
             // there are less than 3 keystrokes in last 9 seconds...
             hacking_reset_counter++;
             if(hacking_reset_counter > 10) {

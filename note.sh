@@ -13,6 +13,6 @@ else
   T=$1 # argument was provided, use it!
 fi
 
-logfile="logs/notes_$(python rewind7am.py $T).txt"
+logfile="/home/cuky/Devel/ulogme/logs/notes_$(python /home/cuky/Devel/ulogme/rewind7am.py $T).txt"
 echo "$T $n" >> $logfile
-echo "logged note: $T $n into $logfile"
+#echo "logged note: $T $n into $logfile"
