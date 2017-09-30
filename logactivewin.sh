@@ -13,7 +13,7 @@ maxtime="600" # if last write happened more than this many seconds ago, write ev
 #------------------------------
 # Config so that cdo works from shell
 export DISPLAY=":1"
-export XAUTHORITY=/home/cuky/.Xauthority
+export XAUTHORITY=/run/user/1000/gdm/Xauthority #/home/cuky/.Xauthority
 
 mkdir -p logs
 last_write="0"
@@ -42,7 +42,8 @@ do
 		curtitle="__LOCKEDSCREEN"
 	else
 		id=$(sudo -H -u cuky bash -c "xdotool getactivewindow")
-		curtitle=$(wmctrl -lpG | while read -a a; do w=${a[0]}; if (($((16#${w:2}))==id)) ; then echo "${a[@]:8}"; break; fi; done)
+		#curtitle=$(wmctrl -lpG | while read -a a; do w=${a[0]}; if (($((16#${w:2}))==id)) ; then echo "${a[@]:8}"; break; fi; done)
+	    curtitle=$(xdotool getwindowfocus getwindowname)
 	fi
 
 	perform_write=false
@@ -65,7 +66,7 @@ do
 		# number of seconds elapsed since Jan 1, 1970 0:00 UTC
 		logfile="/home/cuky/Devel/ulogme/logs/window_$(python /home/cuky/Devel/ulogme/rewind7am.py).txt"
 		echo "$T $curtitle" >> $logfile
-		#echo "logged window title: $(date) $curtitle into $logfile"
+		echo "logged window title: $(date) $curtitle into $logfile"
 		last_write=$T
 	fi
 

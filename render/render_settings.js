@@ -7,19 +7,17 @@
 // these get applied in order they are specified, from top to bottom
 var title_mappings = [
 {pattern : /Google Chrome/, mapto : 'Google Chrome'},
-{pattern : /Firefox/, mapto : 'Google Chrome'}, // lol
-{pattern : /MATLAB/, mapto : 'Matlab'},
-{pattern : /Figure/, mapto : 'Matlab'},
-{pattern : /Inotebook/, mapto : 'INotebook'},
+{pattern : /Firefox/, mapto : 'Firefox'}, // lol
+{pattern : /Slack/, mapto : 'Slack'},
 {pattern : /.pdf/, mapto : 'Papers'},
-{pattern : /Gmail/, mapto : 'Gmail'},
-{pattern : /karpathy@/, mapto : 'Terminal'},
-{pattern : /Sublime Text/, mapto : 'SubText2'},
-{pattern : /\.js.*Sublime Text/, mapto : 'SubText2 Coding'},
-{pattern : /\.py.*Sublime Text/, mapto : 'SubText2 Coding'},
-{pattern : /\.html.*Sublime Text/, mapto : 'SubText2 Coding'},
-{pattern : /\.cpp.*Sublime Text/, mapto : 'SubText2 Coding'},
-{pattern : /\.h.*Sublime Text/, mapto : 'SubText2 Coding'},
+{pattern : /Thunderbird/, mapto : 'Mails'},
+{pattern : /cuky@/, mapto : 'Terminal'},
+{pattern : /gedit/, mapto : 'Notes'},
+{pattern : /VIM/, mapto : 'Coding'},
+{pattern : /CLion/, mapto : 'Coding'},
+{pattern : /PyCharm/, mapto : 'Coding'},
+{pattern : /IntelliJ IDEA/, mapto : 'Coding'},
+{pattern : /WebStorm/, mapto : 'Coding'},
 {pattern : /__LOCKEDSCREEN/, mapto : 'Locked Screen'}, // __LOCKEDSCREEN is a special token
 {pattern : /TeXworks/, mapto : 'Latex'},
 ];
@@ -49,24 +47,24 @@ function mapwin(w) {
 // These groups will be rendered together in the "barcode view". For example, I like
 // to group my work stuff and play stuff together.
 var display_groups = [];
-display_groups.push(["Gmail", "Google Chrome", "MISC", "SubText2"]); // internet related
-display_groups.push(["Matlab", "SubText2 Coding", "INotebook", "Terminal", "Papers"]); // work related
+display_groups.push(["Mails", "Firefox", "MISC", "Slack"]); // internet related
+display_groups.push(["Coding", "Terminal", "Papers", "Notes", 'Google Chrome']); // work related
 display_groups.push(["TeXworks"]); // paper writing related
-display_groups.push(["Locked Screen"]); // computer not being used 
+display_groups.push(["Locked Screen"]); // computer not being used
 
 // list of titles that classify as "hacking", or being productive in general
 // the main goal of the day is to get a lot of focused sessions of hacking
 // done throughout the day. Windows that arent in this list do not
 // classify as hacking, and they break "streaks" (events of focused hacking)
-// the implementation is currently quite hacky, experimental and contains 
+// the implementation is currently quite hacky, experimental and contains
 // many magic numbers.
-var hacking_titles = ["INotebook", "Terminal", "Matlab", "SubText2 Coding"];
+var hacking_titles = ["Terminal","Coding", "Notes", 'Google Chrome'];
 var draw_hacking = true; // by default turning this off
 
 // draw notes row?
 var draw_notes = true;
 
 // experimental coffee levels indicator :)
-// looks for notes that mention coffee and shows 
+// looks for notes that mention coffee and shows
 // levels of coffee in body over time
-var draw_coffee = false;
+var draw_coffee = true;
